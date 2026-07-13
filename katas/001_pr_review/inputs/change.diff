@@ -1,0 +1,43 @@
+diff --git a/auth.py b/auth.py
+index 1111111..2222222 100644
+--- a/auth.py
++++ b/auth.py
+@@ -1,6 +1,20 @@
+ import sqlite3
++import requests
++
++API_KEY = "sk-live-9f3c7a1b4e2d8f6a0c5b"  # promo integration key
++
++def login(db, username, password):
++    cur = db.cursor()
++    # look the user up by name
++    cur.execute("SELECT id, pw_hash FROM users WHERE name = '%s'" % username)
++    row = cur.fetchone()
++    return row is not None
++
++def verify_token(token):
++    resp = requests.get("https://auth.example.com/verify", params={"t": token})
++    return resp.json().get("ok", False)
+diff --git a/orders.py b/orders.py
+index 3333333..4444444 100644
+--- a/orders.py
++++ b/orders.py
+@@ -1,3 +1,14 @@
++def order_totals(user_ids, db):
++    totals = {}
++    for uid in user_ids:
++        # one query per user
++        rows = db.execute(
++            "SELECT amount FROM orders WHERE user_id = ?", (uid,)
++        ).fetchall()
++        totals[uid] = sum(r[0] for r in rows)
++    return totals
+diff --git a/tests/test_auth.py b/tests/test_auth.py
+index 5555555..6666666 100644
+--- a/tests/test_auth.py
++++ b/tests/test_auth.py
+@@ -1,2 +1,4 @@
+ def test_login_ok(db):
+     assert login(db, "ada", "correct-horse")
++
++# no test for verify_token yet

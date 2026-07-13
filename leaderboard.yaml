@@ -1,0 +1,53 @@
+# Kata leaderboard — one list per kata, lower score wins.
+# Add a row via PR; CI re-runs your submission and confirms run_hash before merge.
+# `self_reported: true` = run on a self-hosted/gated endpoint CI can't reach (gets a badge).
+# The seed rows below are examples run by @eigen; replace them by beating them.
+
+"001":
+  - solver: eigen
+    skill: submissions/eigen/001.md
+    name: pr-review
+    model: claude-haiku-4-5
+    provider: Anthropic
+    cost: 0.003
+    attempts: 1
+    chars: 573
+    score: 14
+    run_hash: seed-001
+    created: 2026-07-14
+    self_reported: true
+
+"002":
+  - solver: eigen
+    skill: submissions/eigen/002.md
+    name: refactor-async
+    model: claude-haiku-4-5
+    provider: Anthropic
+    cost: 0.002
+    attempts: 1
+    chars: 326
+    score: 10
+    run_hash: seed-002
+    created: 2026-07-14
+    self_reported: true
+
+"004":
+  - solver: eigen
+    skill: submissions/eigen/004.md
+    name: bug-hunt
+    model: claude-haiku-4-5
+    provider: Anthropic
+    cost: 0.001
+    attempts: 1
+    chars: 284
+    score: 9
+    run_hash: seed-004
+    created: 2026-07-14
+    self_reported: true
+
+# Harder katas — no seed scores. Run the matching submissions/eigen/*.md and claim the crown.
+"003": []
+"005": []
+"006": []
+"007": []
+"008": []

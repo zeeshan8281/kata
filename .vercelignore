@@ -1,0 +1,7 @@
+*.py
+katas/
+submissions/
+.github/
+*.yaml
+!vercel.json
+requirements.txt

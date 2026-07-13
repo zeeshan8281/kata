@@ -1,0 +1,3 @@
+attempt_cap: 3
+token_cap: 8000
+wallclock_cap_s: 120

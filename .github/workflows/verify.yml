@@ -1,0 +1,36 @@
+name: verify
+on:
+  pull_request:
+    paths: ["submissions/**", "leaderboard.yaml", "katas/**"]
+  push:
+    branches: [main]
+    paths: ["leaderboard.yaml"]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      # sanity: scorer + every kata check import and self-check cleanly
+      - run: python scorer.py
+      - name: re-run each leaderboard entry and confirm score + run_hash
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.KATA_API_KEY }}
+        run: python ci_verify.py
+      - name: re-render leaderboard
+        run: |
+          python render.py
+          git config user.name  "kata-bot"
+          git config user.email "kata-bot@users.noreply.github.com"
+          git add README.md docs/leaderboard.html
+          git diff --cached --quiet || git commit -m "chore: re-render leaderboard"
+        if: github.event_name == 'push'
+      - uses: ad-m/github-push-action@master
+        if: github.event_name == 'push'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
