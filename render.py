@@ -363,9 +363,23 @@ try{applyUser(JSON.parse(localStorage.getItem(KEY)||'null'));}catch(e){applyUser
 </body></html>"""
 
 
+def write_web_data(data):
+    """Emit the React app's data from the same single source of truth."""
+    payload = {
+        "repo": REPO,
+        "template": open(os.path.join(HERE, "submissions", "_template", "SKILL.md")).read(),
+        "katas": [{"id": k, "name": n, "desc": d, "diff": diff} for k, (n, d, diff) in KATA_META.items()],
+        "board": {k: ordered(data.get(k, [])) for k in KATAS},
+    }
+    path = os.path.join(HERE, "web", "src", "data.json")
+    if os.path.isdir(os.path.dirname(path)):
+        open(path, "w").write(json.dumps(payload, default=str, indent=2))
+
+
 if __name__ == "__main__":
     data = yaml.safe_load(open(os.path.join(HERE, "leaderboard.yaml")))
     os.makedirs(os.path.join(HERE, "docs"), exist_ok=True)
     write_html(data)
     update_readme(readme_table(data))
-    print("rendered site -> README.md + docs/index.html")
+    write_web_data(data)
+    print("rendered site -> README.md + docs/index.html + web/src/data.json")

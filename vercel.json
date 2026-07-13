@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "buildCommand": null,
-  "installCommand": null,
-  "outputDirectory": "docs"
+  "installCommand": "cd web && npm install",
+  "buildCommand": "cd web && npm run build",
+  "outputDirectory": "web/dist"
 }

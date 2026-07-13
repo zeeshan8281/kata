@@ -1,0 +1,109 @@
+{
+  "repo": "https://github.com/zeeshan8281/kata",
+  "template": "---\nname: my-kata-solver\ndescription: One line \u2014 what this Skill makes the model do.\n---\n\nWrite your Skill body here. It becomes the system prompt the model runs under.\n\nShorter and more precise beats longer and verbose \u2014 Skill length is in the score.\nCopy this file to `submissions/<your-github-handle>/<kata_id>.md` (e.g. `submissions/octocat/001.md`).\n",
+  "katas": [
+    {
+      "id": "001",
+      "name": "pr-review",
+      "desc": "Audit a PR diff \u2192 JSON of security concerns, perf hotspots, missing tests.",
+      "diff": 1
+    },
+    {
+      "id": "002",
+      "name": "refactor-async",
+      "desc": "Convert a sync Python module to async/await, behaviour unchanged.",
+      "diff": 1
+    },
+    {
+      "id": "003",
+      "name": "cron-next",
+      "desc": "next_run(expr, after) for 5-field cron \u2014 steps, ranges, the day-of-month/day-of-week OR rule, leap years.",
+      "diff": 3
+    },
+    {
+      "id": "004",
+      "name": "bug-hunt",
+      "desc": "Make a failing test pass with the smallest fix.",
+      "diff": 1
+    },
+    {
+      "id": "005",
+      "name": "secure-query",
+      "desc": "Rewrite an injectable DB module to parameterized queries \u2014 functional AND injection tests.",
+      "diff": 3
+    },
+    {
+      "id": "006",
+      "name": "optimize",
+      "desc": "Rewrite an O(n\u00b2) function to O(n). Correct on edge cases, or it times out.",
+      "diff": 2
+    },
+    {
+      "id": "007",
+      "name": "task-pool",
+      "desc": "async run_pool(tasks, limit) \u2014 bounded concurrency, results in input order.",
+      "diff": 3
+    },
+    {
+      "id": "008",
+      "name": "semver",
+      "desc": "compare(a, b) per SemVer 2.0.0 \u2014 the full pre-release precedence chain.",
+      "diff": 2
+    }
+  ],
+  "board": {
+    "001": [
+      {
+        "solver": "eigen",
+        "skill": "submissions/eigen/001.md",
+        "name": "pr-review",
+        "model": "claude-haiku-4-5",
+        "provider": "Anthropic",
+        "cost": 0.003,
+        "attempts": 1,
+        "chars": 573,
+        "score": 14,
+        "run_hash": "seed-001",
+        "created": "2026-07-14",
+        "self_reported": true
+      }
+    ],
+    "002": [
+      {
+        "solver": "eigen",
+        "skill": "submissions/eigen/002.md",
+        "name": "refactor-async",
+        "model": "claude-haiku-4-5",
+        "provider": "Anthropic",
+        "cost": 0.002,
+        "attempts": 1,
+        "chars": 326,
+        "score": 10,
+        "run_hash": "seed-002",
+        "created": "2026-07-14",
+        "self_reported": true
+      }
+    ],
+    "003": [],
+    "004": [
+      {
+        "solver": "eigen",
+        "skill": "submissions/eigen/004.md",
+        "name": "bug-hunt",
+        "model": "claude-haiku-4-5",
+        "provider": "Anthropic",
+        "cost": 0.001,
+        "attempts": 1,
+        "chars": 284,
+        "score": 9,
+        "run_hash": "seed-004",
+        "created": "2026-07-14",
+        "self_reported": true
+      }
+    ],
+    "005": [],
+    "006": [],
+    "007": [],
+    "008": []
+  }
+}

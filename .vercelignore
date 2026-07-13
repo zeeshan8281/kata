@@ -1,7 +1,10 @@
-*.py
+__pycache__/
+*.pyc
+.venv/
+node_modules
+web/node_modules
+web/dist
+docs/
 katas/
 submissions/
 .github/
-*.yaml
-!vercel.json
-requirements.txt

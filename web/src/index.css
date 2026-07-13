@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@source "../node_modules/@layr-labs/eigen-design/dist";
+@import "@layr-labs/eigen-design/styles";
+
+/* dark scope is set via <html class="dark">; wire the base page to the tokens */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+html {
+  scroll-behavior: smooth;
+}
