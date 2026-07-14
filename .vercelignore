@@ -7,5 +7,8 @@ web/dist
 katas/
 submissions/
 .github/
-*.ts
-tsconfig.json
+# Root-anchored so the harness .ts stay out of the deploy WITHOUT matching
+# web/vite.config.ts — a bare `*.ts` here excluded the Vite config and broke
+# the build (no react plugin -> classic JSX -> "React is not defined").
+/*.ts
+/tsconfig.json
