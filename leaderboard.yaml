@@ -3,6 +3,7 @@
 # re-runs it against the sealed tests and recomputes your score before merge.
 # `self_reported: true` = run on a self-hosted/gated endpoint CI can't reach (gets a badge).
 # The seed rows below are examples run by @eigen; replace them by beating them.
+# CI auto-renders README + web/src/data.json on merge to main.
 
 "001":
   - solver: eigen
