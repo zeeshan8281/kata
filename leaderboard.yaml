@@ -1,5 +1,6 @@
 # Kata leaderboard — one list per kata, lower score wins.
-# Add a row via PR; CI re-runs your submission and confirms run_hash before merge.
+# Add a row via PR; your `skill` must live under submissions/<your-solver>/, and CI
+# re-runs it against the sealed tests and recomputes your score before merge.
 # `self_reported: true` = run on a self-hosted/gated endpoint CI can't reach (gets a badge).
 # The seed rows below are examples run by @eigen; replace them by beating them.
 

@@ -15,9 +15,17 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
-      # sanity: scorer + every kata check import and self-check cleanly
+      # sanity: scorer self-check
       - run: python scorer.py
-      - name: re-run each leaderboard entry and confirm score + run_hash
+      # structure-only validation — no secret, safe for untrusted fork PRs.
+      # Does NOT execute submissions or kata checks against a paid endpoint.
+      - name: validate leaderboard structure
+        run: python ci_verify.py --dry
+      # Paid re-run needs the API key, which in turn executes kata check.py.
+      # Only run it where the code is trusted: pushes to main, or PRs from a
+      # branch in THIS repo. Fork PRs get --dry above; a maintainer re-runs on merge.
+      - name: re-run each leaderboard entry and confirm score
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         env:
           ANTHROPIC_API_KEY: ${{ secrets.KATA_API_KEY }}
         run: python ci_verify.py
@@ -26,7 +34,7 @@ jobs:
           python render.py
           git config user.name  "kata-bot"
           git config user.email "kata-bot@users.noreply.github.com"
-          git add README.md docs/leaderboard.html
+          git add README.md web/src/data.json docs/leaderboard.html
           git diff --cached --quiet || git commit -m "chore: re-render leaderboard"
         if: github.event_name == 'push'
       - uses: ad-m/github-push-action@master

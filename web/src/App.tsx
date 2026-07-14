@@ -68,7 +68,8 @@ function SignInDialog({ open, onOpenChange, onSignedIn }: {
           <DialogTitle>Set your GitHub handle</DialogTitle>
           <DialogDescription>
             This isn't a login — it just fills your handle into the commands below and remembers it locally.
-            Your real identity is the account you open the PR from; CI checks the commit author before your row lands.
+            Your Skill has to live under <Mono>submissions/&lt;handle&gt;/</Mono>, and CI re-runs it to recompute
+            your score before your row lands. The handle here is just for convenience.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-2">
