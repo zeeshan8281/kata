@@ -55,10 +55,12 @@
     name: optimize
     model: claude-haiku-4-5
     provider: Anthropic
-    cost: 0.001
+    cost: 0.0007
     attempts: 1
-    chars: 535
-    score: 12
+    chars: 533
+    score: 11
+    run_hash: openrouter-haiku-4.5
     created: 2026-07-14
+    self_reported: true
 "007": []
 "008": []
