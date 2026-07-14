@@ -85,7 +85,9 @@ _No submissions yet — [be first](#how-to-play)._
 
 ### 007 · task-pool
 
-_No submissions yet — [be first](#how-to-play)._
+| | Solver | Skill | Score | Breakdown | Model |
+|---|---|---|---|---|---|
+| 🏆 | @zeeshan8281 ⚑ | `task-pool` | **12** | $0.0008 · 1 att · 610 chars | claude-haiku-4-5 (Anthropic) |
 
 ### 008 · semver
 
