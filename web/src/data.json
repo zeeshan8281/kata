@@ -1,11 +1,11 @@
 {
   "repo": "https://github.com/zeeshan8281/kata",
-  "template": "---\nname: my-kata-solver\ndescription: One line \u2014 what this Skill makes the model do.\n---\n\nWrite your Skill body here. It becomes the system prompt the model runs under.\n\nShorter and more precise beats longer and verbose \u2014 Skill length is in the score.\nCopy this file to `submissions/<your-github-handle>/<kata_id>.md` (e.g. `submissions/octocat/001.md`).\n",
+  "template": "---\nname: my-kata-solver\ndescription: One line — what this Skill makes the model do.\n---\n\nWrite your Skill body here. It becomes the system prompt the model runs under.\n\nShorter and more precise beats longer and verbose — Skill length is in the score.\nCopy this file to `submissions/<your-github-handle>/<kata_id>.md` (e.g. `submissions/octocat/001.md`).\n",
   "katas": [
     {
       "id": "001",
       "name": "pr-review",
-      "desc": "Audit a PR diff \u2192 JSON of security concerns, perf hotspots, missing tests.",
+      "desc": "Audit a PR diff → JSON of security concerns, perf hotspots, missing tests.",
       "diff": 1
     },
     {
@@ -17,7 +17,7 @@
     {
       "id": "003",
       "name": "cron-next",
-      "desc": "next_run(expr, after) for 5-field cron \u2014 steps, ranges, the day-of-month/day-of-week OR rule, leap years.",
+      "desc": "next_run(expr, after) for 5-field cron — steps, ranges, the day-of-month/day-of-week OR rule, leap years.",
       "diff": 3
     },
     {
@@ -29,25 +29,25 @@
     {
       "id": "005",
       "name": "secure-query",
-      "desc": "Rewrite an injectable DB module to parameterized queries \u2014 functional AND injection tests.",
+      "desc": "Rewrite an injectable DB module to parameterized queries — functional AND injection tests.",
       "diff": 3
     },
     {
       "id": "006",
       "name": "optimize",
-      "desc": "Rewrite an O(n\u00b2) function to O(n). Correct on edge cases, or it times out.",
+      "desc": "Rewrite an O(n²) function to O(n). Correct on edge cases, or it times out.",
       "diff": 2
     },
     {
       "id": "007",
       "name": "task-pool",
-      "desc": "async run_pool(tasks, limit) \u2014 bounded concurrency, results in input order.",
+      "desc": "async run_pool(tasks, limit) — bounded concurrency, results in input order.",
       "diff": 3
     },
     {
       "id": "008",
       "name": "semver",
-      "desc": "compare(a, b) per SemVer 2.0.0 \u2014 the full pre-release precedence chain.",
+      "desc": "compare(a, b) per SemVer 2.0.0 — the full pre-release precedence chain.",
       "diff": 2
     }
   ],

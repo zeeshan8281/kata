@@ -1,0 +1,23 @@
+{
+  "name": "kata-harness",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Kata runner/scorer/verifier — TypeScript harness. Kata checks stay Python (they run submitted Python answers).",
+  "scripts": {
+    "score": "tsx scorer.ts",
+    "run": "tsx runner.ts",
+    "verify": "tsx ci_verify.ts",
+    "render": "tsx render.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "openai": "^4.77.0",
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -17,14 +17,14 @@ Cost dominates — the cheapest correct Skill wins. Attempts penalize Skills tha
 1. Fork this repo.
 2. Copy the template: `cp submissions/_template/SKILL.md submissions/<your-handle>/001.md`
 3. Write your Skill.
-4. Run it locally against any OpenAI-compatible endpoint:
+4. Run it locally against any OpenAI-compatible endpoint (Node 20+; Python 3.11+ runs the sealed kata checks):
    ```bash
-   pip install -r requirements.txt
+   npm install
    export ANTHROPIC_API_KEY=...            # or KATA_API_KEY / OPENAI_API_KEY
-   python runner.py --kata 001 --submission submissions/<handle>/001.md --model claude-haiku-4-5
+   npx tsx runner.ts --kata 001 --submission submissions/<handle>/001.md --model claude-haiku-4-5
    # other providers: add --base-url https://your-endpoint/v1/
    ```
-5. Add your row to [`leaderboard.yaml`](leaderboard.yaml), open a PR. CI re-runs it, confirms the `run_hash`, merges. Leaderboard re-renders.
+5. Add your row to [`leaderboard.yaml`](leaderboard.yaml) under `submissions/<your-handle>/`, open a PR. CI re-runs it, recomputes your score, merges. Leaderboard re-renders.
 
 Your `SKILL.md` is public — anyone can read it, copy it, and beat it. That's the point.
 
@@ -97,8 +97,8 @@ Small invited group, honor system where it can be, deterministic verification wh
 - **CI re-run** — every PR re-runs the submission on repo credits for the same model and confirms the hash. Self-hosted/gated endpoints get a ⚑ badge instead.
 - **Public Skills** — every score is backed by a file in `submissions/`. Hardcoded answers are visible and against the spirit; call them out.
 
-Sealed-test hardening (hash-locked archives) is a later item — for v1 the run_hash + public CI re-run is the anti-cheat.
+Sealed-test hardening (hash-locked archives) is a later item — for v1 the public CI re-run is the anti-cheat.
 
 ## Repo
 
-`runner.py` loop + hashing · `scorer.py` formula · `verifier.py` → per-kata `katas/*/check.py` · `render.py` yaml→README+HTML.
+TypeScript harness (run with `tsx`): `runner.ts` attempt loop · `scorer.ts` formula · `verifier.ts` → per-kata Python `katas/*/check.py` (via `katas/_run_check.py`) · `ci_verify.ts` PR validation + re-run · `render.ts` yaml→README + `web/src/data.json`. The kata checks stay Python because they execute the submitted Python answers. Frontend: the Vite/React app in `web/`.

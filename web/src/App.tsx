@@ -116,7 +116,7 @@ function HowToDialog({ open, onOpenChange, handle, user }: {
           <Step n={4} title="Run it against any model">
             Any OpenAI-compatible endpoint. Bring your own key.
             <Pre>{`export ANTHROPIC_API_KEY=...
-python runner.py --kata 001 \\
+npx tsx runner.ts --kata 001 \\
   --submission submissions/${handle}/001.md \\
   --model claude-haiku-4-5`}</Pre>
           </Step>

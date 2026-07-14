@@ -11,16 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need the base ref for author-binding diff
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - run: pip install -r requirements.txt
-      # sanity: scorer self-check
-      - run: python scorer.py
+          python-version: "3.11" # runs the sealed kata checks (stdlib only)
+      - run: npm ci
+      # scorer self-check — no secret
+      - run: npx tsx scorer.ts
       # structure-only validation — no secret, safe for untrusted fork PRs.
-      # Does NOT execute submissions or kata checks against a paid endpoint.
+      # Does NOT execute submissions/checks against a paid endpoint. Also enforces
+      # that any newly-added row belongs to the PR author's own handle.
       - name: validate leaderboard structure
-        run: python ci_verify.py --dry
+        run: >
+          npx tsx ci_verify.ts --dry
+          --author "${{ github.event.pull_request.user.login }}"
+          --base-ref "origin/${{ github.event.pull_request.base.ref || 'main' }}"
       # Paid re-run needs the API key, which in turn executes kata check.py.
       # Only run it where the code is trusted: pushes to main, or PRs from a
       # branch in THIS repo. Fork PRs get --dry above; a maintainer re-runs on merge.
@@ -28,15 +37,15 @@ jobs:
         if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         env:
           ANTHROPIC_API_KEY: ${{ secrets.KATA_API_KEY }}
-        run: python ci_verify.py
+        run: npx tsx ci_verify.ts
       - name: re-render leaderboard
+        if: github.event_name == 'push'
         run: |
-          python render.py
+          npx tsx render.ts
           git config user.name  "kata-bot"
           git config user.email "kata-bot@users.noreply.github.com"
-          git add README.md web/src/data.json docs/leaderboard.html
+          git add README.md web/src/data.json
           git diff --cached --quiet || git commit -m "chore: re-render leaderboard"
-        if: github.event_name == 'push'
       - uses: ad-m/github-push-action@master
         if: github.event_name == 'push'
         with:

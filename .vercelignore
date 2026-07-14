@@ -4,7 +4,8 @@ __pycache__/
 node_modules
 web/node_modules
 web/dist
-docs/
 katas/
 submissions/
 .github/
+*.ts
+tsconfig.json
