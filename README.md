@@ -79,7 +79,9 @@ _No submissions yet — [be first](#how-to-play)._
 
 ### 006 · optimize
 
-_No submissions yet — [be first](#how-to-play)._
+| | Solver | Skill | Score | Breakdown | Model |
+|---|---|---|---|---|---|
+| 🏆 | @zeeshan8281 ⚑ | `optimize` | **11** | $0.0007 · 1 att · 533 chars | claude-haiku-4-5 (Anthropic) |
 
 ### 007 · task-pool
 
