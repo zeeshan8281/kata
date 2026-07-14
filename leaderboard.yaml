@@ -49,6 +49,16 @@
 # Harder katas — no seed scores. Run the matching submissions/eigen/*.md and claim the crown.
 "003": []
 "005": []
-"006": []
+"006":
+  - solver: zeeshan8281
+    skill: submissions/zeeshan8281/006.md
+    name: optimize
+    model: claude-haiku-4-5
+    provider: Anthropic
+    cost: 0.001
+    attempts: 1
+    chars: 535
+    score: 12
+    created: 2026-07-14
 "007": []
 "008": []
