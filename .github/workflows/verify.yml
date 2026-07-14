@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths: ["leaderboard.yaml"]
 
+permissions:
+  contents: write # the re-render step commits README + data.json back to main
+
 jobs:
   verify:
     runs-on: ubuntu-latest
